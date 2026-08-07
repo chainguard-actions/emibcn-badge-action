@@ -1,0 +1,34 @@
+name: Test badge with gradient colors
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: badge
+        uses: .
+        with:
+          label: Score
+          status: '9.5/10'
+          color: 'green,blue'
+          label-color: '333'
+      - name: Assert badge output is non-empty SVG with gradient
+        env:
+          BADGE: ${{ steps.badge.outputs.badge }}
+        run: |
+          echo "badge output length: ${#BADGE}"
+          echo "badge (first 300 chars): ${BADGE:0:300}"
+          if [ -z "$BADGE" ]; then
+            echo "FAIL: badge output is empty"
+            exit 1
+          fi
+          if ! echo "$BADGE" | grep -qi '<svg'; then
+            echo "FAIL: badge output does not contain <svg"
+            exit 1
+          fi
+          if ! echo "$BADGE" | grep -qi 'linearGradient\|gradient'; then
+            echo "FAIL: badge output does not contain gradient element"
+            exit 1
+          fi
+          echo "PASS: badge output contains SVG with gradient"
