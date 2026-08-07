@@ -1,0 +1,38 @@
+name: Test badge written to file
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: badge
+        uses: .
+        with:
+          label: Coverage
+          status: '95%'
+          color: brightgreen
+          path: /tmp/test-badge.svg
+      - name: Assert badge file exists and contains SVG
+        run: |
+          if [ ! -f /tmp/test-badge.svg ]; then
+            echo "FAIL: badge file /tmp/test-badge.svg was not created"
+            exit 1
+          fi
+          CONTENT=$(cat /tmp/test-badge.svg)
+          echo "file content (first 200 chars): ${CONTENT:0:200}"
+          if ! echo "$CONTENT" | grep -qi '<svg'; then
+            echo "FAIL: badge file does not contain <svg"
+            exit 1
+          fi
+          echo "PASS: badge file exists and contains SVG content"
+      - name: Assert badge output is also set
+        env:
+          BADGE: ${{ steps.badge.outputs.badge }}
+        run: |
+          echo "badge output length: ${#BADGE}"
+          if [ -z "$BADGE" ]; then
+            echo "FAIL: badge output is empty even when path is set"
+            exit 1
+          fi
+          echo "PASS: badge output is set"

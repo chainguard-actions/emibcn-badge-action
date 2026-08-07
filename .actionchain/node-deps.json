@@ -1,0 +1,9 @@
+{
+  "status": "self_contained",
+  "entries": [
+    {
+      "path": "dist/badge-action.modern.js",
+      "status": "self_contained"
+    }
+  ]
+}
