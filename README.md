@@ -6,10 +6,10 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 
 ## Versions
 
-| Version | Tag | Upstream commit |
-|---------|-----|-----------------|
-| v2.0.2 | [`v2.0.2`](https://github.com/chainguard-actions/emibcn-badge-action/tree/v2.0.2) | [`4209421`](https://github.com/emibcn/badge-action/commit/4209421db54c8764d8932070ffd0f81715a629bf) |
-| v2.0.4 | [`v2.0.4`](https://github.com/chainguard-actions/emibcn-badge-action/tree/v2.0.4) | [`f9150fd`](https://github.com/emibcn/badge-action/commit/f9150fde070fcca0c4e832437611b44838fcd325) |
+| Version | Tag | Upstream commit | Hardening report |
+|---------|-----|-----------------|------------------|
+| v2.0.2 | [`v2.0.2`](https://github.com/chainguard-actions/emibcn-badge-action/tree/v2.0.2) | [`4209421`](https://github.com/emibcn/badge-action/commit/4209421db54c8764d8932070ffd0f81715a629bf) | [`HARDENING.md`](https://github.com/chainguard-actions/emibcn-badge-action/blob/v2.0.2/HARDENING.md) |
+| v2.0.4 | [`v2.0.4`](https://github.com/chainguard-actions/emibcn-badge-action/tree/v2.0.4) | [`f9150fd`](https://github.com/emibcn/badge-action/commit/f9150fde070fcca0c4e832437611b44838fcd325) | [`HARDENING.md`](https://github.com/chainguard-actions/emibcn-badge-action/blob/v2.0.4/HARDENING.md) |
 
 ## Privacy
 
